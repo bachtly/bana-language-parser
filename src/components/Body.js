@@ -7,14 +7,16 @@ const socket = io('ws://127.0.0.1:1410');
 
 function Body() {
   const [text, setText] = useState('');
-	const [items, setItems] = useState([]);
+	const [items1, setItems1] = useState([]);
+	const [items2, setItems2] = useState([]);
   const [listenSocket, setListenSocket] = useState(false);
 
   const listen = () => {
 		socket.on('parse', function(data) {
       console.log('Data from api');
       console.log(data.data);
-      setItems(data.data);
+      setItems1(data.data[0]);
+      setItems2(data.data[1]);
     })
 	}
 
@@ -71,20 +73,35 @@ function Body() {
 
         {/* Result Area */}
         <Box fullWidth>
-          {items.map((item,index)=>{
+          {items1.map((item,index)=>{
             return (
-            <Box key={index}>	
-              <Box>
+            <Box key={index} sx={{display:'flex', flexDirection:'row'}}>	
+              <Box sx={{width: '50%'}}>
                 <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.key}</Typography>
               </Box>
-              <Box>
+              <Box sx={{width: '50%'}}>
                 <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.val}</Typography>
               </Box>
             </Box>
             )
           })}
-
         </Box>
+
+        <Box fullWidth>
+          {items2.map((item,index)=>{
+            return (
+            <Box key={index} sx={{display:'flex', flexDirection:'row'}}>	
+              <Box sx={{width: '50%'}}>
+                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.key}</Typography>
+              </Box>
+              <Box sx={{width: '50%'}}>
+                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.val}</Typography>
+              </Box>
+            </Box>
+            )
+          })}
+        </Box>
+
       </Box>
     </Box>
   )
