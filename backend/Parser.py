@@ -20,17 +20,17 @@ class Parser:
             OTH ->  'OTH'
         """))
         self.tags_name = {
-            'CN': 'Chu ngu', 
-            'VN': 'Vi ngu', 
-            'DN': 'Danh ngu', 
-            'DDN': 'Dong ngu',
-            'TN': 'Tinh ngu',
-            'N': 'Danh tu',
-            'V': 'Dong tu',
-            'A': 'Tinh tu',
-            'P': 'Dai tu',
-            'L': 'So tu/Luong tu',
-            'OTH': 'Khac'
+            'CN': 'Chủ ngữ', 
+            'VN': 'Vị ngữ', 
+            'DN': 'Danh ngữ', 
+            'DDN': 'Động ngữ',
+            'TN': 'Tính ngữ',
+            'N': 'Danh từ',
+            'V': 'Độn từ',
+            'A': 'Tính từ',
+            'P': 'Đại từ',
+            'L': 'Số từ/Lượng từ',
+            'OTH': 'Khác'
         }
         self.complex_tags = ['CN', 'VN', 'DN', 'DDN', 'TN']
         self.pos_dict = self.init_pos_dict()
@@ -125,10 +125,10 @@ class Parser:
         return (
             [
                 {'key':self.tags_name[i], 'val':' '.join(j)} 
-                for i,j in result if i in self.complex_tags
+                for i,j in result if i in self.complex_tags and ' '.join(j)!=''
             ],
             [
                 {'key':self.tags_name[i], 'val':' '.join(j)} 
-                for i,j in result if i not in self.complex_tags and i!='S'
+                for i,j in result if i not in self.complex_tags and i!='S' and ' '.join(j)!=''
             ]
         )

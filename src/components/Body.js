@@ -28,6 +28,10 @@ function Body() {
     }
   }
 
+  const handleOnChangeTextField = (obj) => {
+    setText(obj.target.value);
+  }
+
   return (
     <Box sx={{
       display: 'flex',
@@ -44,6 +48,7 @@ function Body() {
             display:"flex",
             flexDirection:'column',
             p: 1,
+            mb:7
         }}>
           <TextField  
             label="Nhập một câu tiếng Ba Na" 
@@ -55,7 +60,7 @@ function Body() {
               style: {fontSize: 25} 
             }}                
             sx={{width: '100%', mb: 2, boxShadow: 1}}
-            onChange={(obj) => {setText(obj.target.value)}}
+            onChange={handleOnChangeTextField}
           />
           <Button 
             style={{ fontSize: '20px'}}
@@ -72,7 +77,8 @@ function Body() {
 
 
         {/* Result Area */}
-        <Box fullWidth>
+        <Typography variant='h5' sx={{mb: 2}}>Nhãn văn phạm</Typography>
+        <Box fullWidth sx={{mb:5}}>
           {items1.map((item,index)=>{
             return (
             <Box key={index} sx={{display:'flex', flexDirection:'row'}}>	
@@ -86,7 +92,8 @@ function Body() {
             )
           })}
         </Box>
-
+        
+        <Typography variant='h5' sx={{mb: 2}}>Nhãn PoS</Typography>
         <Box fullWidth>
           {items2.map((item,index)=>{
             return (
