@@ -26,7 +26,7 @@ class Parser:
             'DDN': 'Động ngữ',
             'TN': 'Tính ngữ',
             'N': 'Danh từ',
-            'V': 'Độn từ',
+            'V': 'Động từ',
             'A': 'Tính từ',
             'P': 'Đại từ',
             'L': 'Số từ/Lượng từ',
