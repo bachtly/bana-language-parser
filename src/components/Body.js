@@ -38,7 +38,7 @@ function Body() {
       justifyContent:"center",
     }}>
       <Box sx={{
-        width: '40%',
+        width: {xs: '80%', sm: '50%', md: '40%'},
         display:"flex",
         flexDirection:"column",
         justifyContent:"center",
@@ -54,20 +54,21 @@ function Body() {
             label="Nhập một câu tiếng Ba Na" 
             variant="standard" 
             inputProps={{
-              style: {fontSize: 25} 
+              style: {fontSize: 15} 
             }}
             InputLabelProps={{
-              style: {fontSize: 25} 
+              style: {fontSize: 15} 
             }}                
             sx={{width: '100%', mb: 2, boxShadow: 1}}
             onChange={handleOnChangeTextField}
           />
           <Button 
-            style={{ fontSize: '20px'}}
+            // style={{ fontSize: {xs:'10px', md: '20px'}}}
             sx={{
               height: '100%',
               width: '100%',
-              border: '1px #ebebeb solid'
+              border: '1px #ebebeb solid',
+              fontSize: {xs:'14px', md: '20px'}
             }}
             onClick={handleOnClickBtn}
           >
@@ -77,32 +78,34 @@ function Body() {
 
 
         {/* Result Area */}
-        <Typography variant='h5' sx={{mb: 2}}>Nhãn văn phạm</Typography>
+        <Typography variant='h6' sx={{mb: 2}}>Nhãn văn phạm</Typography>
         <Box fullWidth sx={{mb:5}}>
           {items1.map((item,index)=>{
             return (
             <Box key={index} sx={{display:'flex', flexDirection:'row'}}>	
-              <Box sx={{width: '50%'}}>
-                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.key}</Typography>
+              <Box sx={{width: '40%', mr: 1}}>
+                <Typography noWrap sx={{fontSize: {xs: '10', sm: '14'}, maxWidth:'100%', display:'inline-block'}}>{item.key}</Typography>
               </Box>
-              <Box sx={{width: '50%'}}>
-                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.val}</Typography>
+              :
+              <Box sx={{width: '60%'}}>
+                <Typography noWrap sx={{fontSize: {xs: '10', sm: '14'}, pl:2, maxWidth:'100%', display:'inline-block'}}>{item.val}</Typography>
               </Box>
             </Box>
             )
           })}
         </Box>
         
-        <Typography variant='h5' sx={{mb: 2}}>Nhãn PoS</Typography>
+        <Typography variant='h6' sx={{mb: 2}}>Nhãn PoS</Typography>
         <Box fullWidth>
           {items2.map((item,index)=>{
             return (
             <Box key={index} sx={{display:'flex', flexDirection:'row'}}>	
-              <Box sx={{width: '50%'}}>
-                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.key}</Typography>
+              <Box sx={{width: '40%', mr:1}}>
+                <Typography noWrap sx={{fontSize: {xs: '10', sm: '14'}, maxWidth:'100%', display:'inline-block'}}>{item.key}</Typography>
               </Box>
-              <Box sx={{width: '50%'}}>
-                <Typography noWrap sx={{fontSize: 18, fontWeight:500, maxWidth: '70%', display:'inline-block'}}>{item.val}</Typography>
+              :
+              <Box sx={{width: '60%'}}>
+                <Typography noWrap sx={{fontSize: {xs: '10', sm: '14'}, pl:2, maxWidth:'100%', display:'inline-block'}}>{item.val}</Typography>
               </Box>
             </Box>
             )
